@@ -19,7 +19,6 @@ class RegisterPage extends StatelessWidget {
         await FirebaseFirestore.instance.collection('users').add({
           'name': nameController.text,
           'email': emailController.text,
-
           'phoneNumber': phoneNumberController.text,
         });
         _login(context);
@@ -76,14 +75,19 @@ class RegisterPage extends StatelessWidget {
                   color: Colors.blue.shade900,
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 25),
               TextFormField(
+
                 controller: nameController,
-                decoration: InputDecoration(
+                decoration:
+                InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Names',
+                  labelText: 'Name',
                   hintText: 'Enter your names',
                   suffixIcon: Icon(Icons.person),
+                  fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
+
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -92,7 +96,7 @@ class RegisterPage extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20,),
+              SizedBox(height:10,),
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -100,6 +104,8 @@ class RegisterPage extends StatelessWidget {
                   hintText: 'Enter your email',
                   suffixIcon: Icon(Icons.mail),
                   border: OutlineInputBorder(),
+                  fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
                 ),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
@@ -109,7 +115,7 @@ class RegisterPage extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               TextFormField(
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -117,6 +123,8 @@ class RegisterPage extends StatelessWidget {
                   suffixIcon: Icon(Icons.remove_red_eye),
                   hintText: 'Enter your password',
                   border: OutlineInputBorder(),
+                  fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
                 ),
                 keyboardType: TextInputType.visiblePassword,
                 validator: (value) {
@@ -126,7 +134,7 @@ class RegisterPage extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               TextFormField(
                 controller: phoneNumberController,
                 decoration: InputDecoration(
@@ -134,6 +142,8 @@ class RegisterPage extends StatelessWidget {
                   suffixIcon: Icon(Icons.phone_android),
                   hintText: 'Enter your Phone Number',
                   border: OutlineInputBorder(),
+                  fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
                 ),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
@@ -155,9 +165,9 @@ class RegisterPage extends StatelessWidget {
                 child: Text(
                   'Already Registered?',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.black87,
                     fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                    fontSize: 18,
                   ),
                 ),
               ),

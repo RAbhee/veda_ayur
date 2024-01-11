@@ -12,6 +12,7 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController otpController = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -90,7 +91,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ],
               ),
               Text(
-                'Forgot Password',
+                'Login Via OTP',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -99,20 +100,23 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
               SizedBox(height: 20,),
               TextFormField(
-                controller: phoneNumberController,
+                controller: nameController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: ' Names',
-                  hintText: 'Enter your names',
+                  hintText: 'Enter your names',fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               TextFormField(
                 controller: phoneNumberController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Phone Number',
                   hintText: 'Enter your phone number',
+                  fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
                 ),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
@@ -122,12 +126,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   return null;
                 },
               ),
+              SizedBox(height: 15,),
 
               // Request OTP button
               ElevatedButton(
                 onPressed: _requestOtp,
                 child: const Text('Request OTP'),
               ),
+              SizedBox(height: 10,),
 
               // OTP input
               TextFormField(
@@ -136,6 +142,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   border: OutlineInputBorder(),
                   labelText: 'OTP',
                   hintText: 'Enter the OTP',
+                  fillColor: Colors.white70, // Specify the background color here
+                  filled: true,
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -145,6 +153,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   return null;
                 },
               ),
+              SizedBox(height: 10,),
 
               // Verify OTP button
               ElevatedButton(
